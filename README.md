@@ -4,6 +4,17 @@
 - Sous forme de formulaire <form>
 - Chaque fois que la personne sélectionne une option, scroll automatique vers la section en dessous.
 - Chaque section comporte un bouton : "annuler la commande"
+    -Section Sur Place/À Emporter
+    -menus disponibles
+    -sandwich
+    -garniture
+    -sauce
+    -supplément
+    -boisson
+    -Confirmation finale : Souhaitez-vous ajouter quelquechose à votre commande? Commande terminée
+    
+    -Page finale une fois la commande réalisée : indique le n° de commande
+    
 ### Application tablette - Admin
 - Affichage des commandes en deux colonnes :
   - Colonne "en attente de payement" : reçoit les commandes éffectué sur les téléphones.
