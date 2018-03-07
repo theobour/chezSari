@@ -24,4 +24,5 @@
   - Frite (oui/non)
   - Type de boisson
   - Supplément
+  - Prix
 
