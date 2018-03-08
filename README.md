@@ -22,19 +22,25 @@
 ### Application pour récupérer la data
 - Récupérer la data pour les consulter. Récupérer la data par critère : type de kebab, menu/pas menu, horaire
 ## Back-End
-### Récupération des données
-- Récupérer les données envoyé par la page web client
-- Transmettre les données à l'application tablette (fonctionnement du chat en ligne)
-### Stockage des data
-- Entre la récupération et la transmission
-- Stockage dans une bdd 
-  - ID
-  - Date timestamp
-  - Sur place / à emporter
-  - menu (frite - boisson - sandwich / sandwich)
-  - sandwich (type de kebab)
-  - pain (pita / kebab)
-  - garniture
-  - sauce
-  - prix
+### Sitemap
+- traitementcommande.php : permet de récupérer par méthode POST la commande et la stocker dans la BDD (encours)
+- Index.php : permet à l'utilisateur de visualiser les commandes
+- selectcommande.php : permet de récupérer l'ensemble des commandes dans la BDD(encours) et de les transférer par méthode AJAX à index.php
+- commandevalide.php : Lorsque l'utilisateur clique sur le bouton 3 actions s'effectue :
+    1 : On récupère les données de la commande validé et on l'insère dans la BDD (stockage).
+    2 : On imprime l'ensemble de ces données dans la la colonne "commande payé" de index.php
+    3 : On supprime ces données de la BDD (encours)
+### BDD et champ
+Deux bases de données :
+- encours: pour les commandes qui sont entrain d'être préparée
+- stockage: pour stocker les commandes payées et en relever la data
+
+Elles comportent les mêmes champ :
+- ID
+- date
+- lieu (emporter/sur place)
+- menu (sandwich/sandwich-frite-boisson)
+- pain (type de pain)
+- sauce
+- garniture
 
