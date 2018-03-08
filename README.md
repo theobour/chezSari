@@ -31,9 +31,10 @@
   - ID
   - Date timestamp
   - Sur place / à emporter
-  - Type de kebab
-  - Frite (oui/non)
-  - Type de boisson
-  - Supplément
-  - Prix
+  - menu (frite - boisson - sandwich / sandwich)
+  - sandwich (type de kebab)
+  - pain (pita / kebab)
+  - garniture
+  - sauce
+  - prix
 
