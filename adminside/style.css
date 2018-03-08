@@ -1,0 +1,14 @@
+body {
+    border-collapse: collapse;
+}
+.contain {
+    height: 400px;
+    width: auto;
+    overflow-y: scroll;
+    padding: 4px 4px 4px 4px;
+}
+.dataElt {
+    border: 1px solid black;
+    border-radius: 0.25rem;
+    margin: 2px 2px 2px 2px;
+}

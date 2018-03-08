@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Chez Sari</title>
-        <link rel="stylesheet" type="text/css" href="../CSS/main.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
         <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Open+Sans" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     </head>
@@ -14,7 +14,7 @@
     	<div class="fond_blanc">
 	    	<header>
 	    		
-	    		<img src="../Images/logo.png" alt="logo_Sari">
+	    		<img src="img/logo.png" alt="logo_Sari">
 	    		<div class="fond_rouge">
 	    		</div>
 	    	</header>	
@@ -53,19 +53,19 @@
 		    </nav>
 		</div>
 
-    	<form action="" >
+    	<form action="traitementcommande.php" method="post" >
 
     		<fieldset id="surPlace">
     			<div class="choice">
 	    			<div class="element">
 		    			<label>Sur Place</label>
 		    			<i class="material-icons">restaurant_menu</i>
-		    			<input type="radio" name="surPlace" value="surPlace">
+		    			<input type="radio" name="lieu" value="place">
 		    		</div>
 		    		<div class="element">	
 	    				<label>À Emporter</label>
 	    				<i class="material-icons">shopping_basket</i>
-	    				<input type="radio" name="surPlace" value="aEmporter">
+	    				<input type="radio" name="lieu" value="emporter">
 	    			</div>	
 	    		</div>
     		</fieldset>	
@@ -75,13 +75,13 @@
     			<h2>Choisissez votre menu </h2>
     			<div class="choice">
 	    			<div class="element">	
-	    				<img src="../Images/image1.jpeg" alt="pain">
+	    				<img src="img/image1.jpeg" alt="pain">
 		    			<label>Sandwich - Frites - Boisson</label>
 		    			<input type="radio" name="menu" value="classique">
 		    		</div>
 
 		    		<div class="element">
-		    			<img src="../Images/image2.jpeg" alt="galette">	    			
+		    			<img src="img/image2.jpeg" alt="galette">	    			
 		    			<label>Sandwich seul</label>
 		    			<input type="radio" name="menu" value="sandwich">
 		    		</div>
@@ -109,12 +109,12 @@
 
     			<div class="choice">
     				<div class="element">
-	    				<img src="../Images/image1.jpeg" alt="pain">
+	    				<img src="img/image1.jpeg" alt="pain">
 	    				<label>Pain</label>
 	    				<input type="radio" name="pain" value="pain">
     				</div>
     				<div class="element">
-    					<img src="../Images/image2.jpeg" alt="galette">	 
+    					<img src="img/image2.jpeg" alt="galette">	 
     					<label>Galette/Pita</label>
     					<input type="radio" name="pain" value="pita">
     				</div>
@@ -125,22 +125,22 @@
 	    			<div class="element">
 
 		    			<label>Aucune</label>
-		    			<input type="checkbox" name="garniture" value="sans garniture">
+		    			<input type="checkbox" name="garniture[]" value="sans garniture">
 					</div>
 					<div class="element">
-						<img src="../Images/salade.jpg">
+						<img src="img/salade.jpg">
 	    				<label>Salade</label>
-	    				<input type="checkbox" name="garniture" value="salade">
+	    				<input type="checkbox" name="garniture[]" value="salade">
 	    			</div>
 	    			<div class="element">
-	    				<img src="../Images/tomate.jpg">
+	    				<img src="img/tomate.jpg">
 	    				<label>Tomates</label>
-	    				<input type="checkbox" name="garniture" value="tomate">
+	    				<input type="checkbox" name="garniture[]" value="tomate">
 	    			</div>
 	    			<div class="element">
-	    				<img src="../Images/oignon.jpg">
+	    				<img src="img/oignon.jpg">
 	    				<label>Oignons</label>
-	    				<input type="checkbox" name="garniture" value="oignons">
+	    				<input type="checkbox" name="garniture[]" value="oignon">
 	    			</div>
     			</div>
 
