@@ -22,31 +22,39 @@
 				<div class="progress-tracker-mobile">
 			        <ul class="progress-tracker progress-tracker--text">
 			          <li class="progress-step is-complete">
-			            <span class="progress-marker"></span>
-			            <span class="progress-text">
-			              <h4 class="progress-title">Menu</h4>
-			            </span>
+			          	<a href="#menus" class="anchor">
+				            <span class="progress-marker"></span>
+				            <span class="progress-text">
+				              <h4 class="progress-title">Menu</h4>
+				            </span>
+			            </a>
 			          </li>
 
 			          <li class="progress-step is-complete">
-			            <span class="progress-marker"></span>
-			            <span class="progress-text">
-			              <h4 class="progress-title">Sandwich</h4>
-			            </span>
+			          	<a href="#sandwich" class="anchor">
+				            <span class="progress-marker"></span>
+				            <span class="progress-text">
+				              <h4 class="progress-title">Sandwich</h4>
+				            </span>
+				        </a>
 			          </li>
 
 			          <li class="progress-step is-active">
-			            <span class="progress-marker"></span>
-			            <span class="progress-text">
-			              <h4 class="progress-title">Garniture</h4>
-			            </span>
+			          	<a href="#ingredients" class="anchor">
+				            <span class="progress-marker"></span>
+				            <span class="progress-text">
+				              <h4 class="progress-title">Garniture</h4>
+				            </span>
+				        </a>
 			          </li>
 
 			          <li class="progress-step">
-			            <span class="progress-marker"></span>
-			            <span class="progress-text">
-			              <h4 class="progress-title">Suppléments</h4>
-			            </span>
+			          	<a href="#supplements" class="anchor">
+				            <span class="progress-marker"></span>
+				            <span class="progress-text">
+				              <h4 class="progress-title">Suppléments</h4>
+				            </span>
+				        </a>
 			          </li>
 			        </ul>
 		        </div>
@@ -60,12 +68,12 @@
 	    			<div class="element">
 		    			<label>Sur Place</label>
 		    			<i class="material-icons">restaurant_menu</i>
-		    			<input type="radio" name="lieu" value="place">
+		    			<input type="radio" name="lieu" value="place" onClick="scrollToMenu">
 		    		</div>
 		    		<div class="element">	
 	    				<label>À Emporter</label>
 	    				<i class="material-icons">shopping_basket</i>
-	    				<input type="radio" name="lieu" value="emporter">
+	    				<input type="radio" name="lieu" value="emporter" onClick="scrollTo(menus)">
 	    			</div>	
 	    		</div>
     		</fieldset>	
@@ -75,15 +83,15 @@
     			<h2>Choisissez votre menu </h2>
     			<div class="choice">
 	    			<div class="element">	
-	    				<img src="img/image1.jpeg" alt="pain">
-		    			<label>Sandwich - Frites - Boisson</label>
-		    			<input type="radio" name="menu" value="classique">
+	    				<label>Sandwich + Frites + Boisson<br><em>1€</em></label>
+	    				<img src="img/image1.jpeg" alt="pain">		    			
+		    			<input type="radio" name="menu" value="classique" onClick="scrollTo(sandwich)">
 		    		</div>
 
 		    		<div class="element">
-		    			<img src="img/image2.jpeg" alt="galette">	    			
 		    			<label>Sandwich seul</label>
-		    			<input type="radio" name="menu" value="sandwich">
+		    			<img src="img/image2.jpeg" alt="galette">	    			
+		    			<input type="radio" name="menu" value="sandwich" onClick="scrollTo(sandwich)">
 		    		</div>
 				</div>
 
@@ -94,8 +102,40 @@
     			<h2>Choisissez votre sandwich </h2>
     			<div class="choice">
 	    			<div class="element">
-		    			<input type="radio" name="sandwich" value="kebab">
-		    			<label>Kebab</label>
+	    				<label>Kebab</label>
+		    			<img src="img/image2.jpeg" alt="galette">
+		    			<input type="radio" name="sandwich" value="kebab" onClick="scrollTo(ingredients)">
+		    			<p>Viande de kébab<br><em>5€</em></p>
+		    		</div>
+		    		<div class="element">
+	    				<label>Steak</label>
+		    			<img src="img/image2.jpeg" alt="galette">
+		    			<input type="radio" name="sandwich" value="steak" onClick="scrollTo(ingredients)">
+		    			<p>boeuf<br><em>5€</em></p>
+		    		</div>
+		    		<div class="element">
+	    				<label>Royal</label>
+		    			<img src="img/image2.jpeg" alt="galette">
+		    			<input type="radio" name="sandwich" value="royal" onClick="scrollTo(ingredients)">
+		    			<p>Viande de kébab & cheddar<br><em>5.50€</em></p>
+		    		</div>
+		    		<div class="element">
+	    				<label>Chicken</label>
+		    			<img src="img/image2.jpeg" alt="galette">
+		    			<input type="radio" name="sandwich" value="chicken" onClick="scrollTo(ingredients)">
+		    			<p>Poulet Curry<br><em>6€</em></p>
+		    		</div>
+		    		<div class="element">
+	    				<label>Sari</label>
+		    			<img src="img/image2.jpeg" alt="galette">
+		    			<input type="radio" name="sandwich" value="sari" onClick="scrollTo(ingredients)">
+		    			<p>Viande de kébab, oeufs & curry<br><em>6€</em></p>
+		    		</div>
+		    		<div class="element">
+	    				<label>Royal Sari</label>
+		    			<img src="img/image2.jpeg" alt="galette">
+		    			<input type="radio" name="sandwich" value="royal_sari" onClick="scrollTo(ingredients)">
+		    			<p>Sari + Pommes de terre<br><em>6€</em></p>
 		    		</div>
 	    		</div>
 
@@ -109,61 +149,91 @@
 
     			<div class="choice">
     				<div class="element">
+    					<label>Pain</label>
 	    				<img src="img/image1.jpeg" alt="pain">
-	    				<label>Pain</label>
-	    				<input type="radio" name="pain" value="pain">
+	    				<input type="radio" name="pain" value="pain" onClick="scrollTo(garniture)">
     				</div>
     				<div class="element">
-    					<img src="img/image2.jpeg" alt="galette">	 
     					<label>Galette/Pita</label>
-    					<input type="radio" name="pain" value="pita">
+    					<img src="img/image2.jpeg" alt="galette">	     					
+    					<input type="radio" name="pain" value="pita" onClick="scrollTo(garniture)">
     				</div>
     			</div>
     			
     			<h3>Garniture</h3>
-    			<div class="choice">
+    			<div class="choice" id="garniture">
 	    			<div class="element">
 
 		    			<label>Aucune</label>
-		    			<input type="checkbox" name="garniture[]" value="sans garniture">
+		    			<input type="checkbox" name="garniture[]" value="sans garniture" >
 					</div>
 					<div class="element">
-						<img src="img/salade.jpg">
-	    				<label>Salade</label>
+						<label>Salade</label>
+						<img src="img/salade.jpg">	    				
 	    				<input type="checkbox" name="garniture[]" value="salade">
 	    			</div>
-	    			<div class="element">
-	    				<img src="img/tomate.jpg">
+	    			<div class="element">    				
 	    				<label>Tomates</label>
+	    				<img src="img/tomate.jpg">
 	    				<input type="checkbox" name="garniture[]" value="tomate">
 	    			</div>
 	    			<div class="element">
-	    				<img src="img/oignon.jpg">
 	    				<label>Oignons</label>
+	    				<img src="img/oignon.jpg">
 	    				<input type="checkbox" name="garniture[]" value="oignon">
 	    			</div>
     			</div>
 
     			<h3>Sauce</h3>
-    			<div class="choice">
+    			<div class="choice sauce">
 	    			<div class="element">		    			
 		    			<label>Blanche</label>
-		    			<input type="radio" name="sauce" value="blanche">
+		    			<input type="radio" name="sauce" value="blanche" onClick="scrollTo(supplements)">
 		    		</div>
 		    		<div class="element">	    				
 	    				<label>Ketchup</label>
-	    				<input type="radio" name="sauce" value="ketchup">
+	    				<input type="radio" name="sauce" value="ketchup" onClick="scrollTo(supplements)">
 	    			</div>
 	    			<div class="element">
 	    				<label>Mayonnaise</label>
-	    				<input type="radio" name="sauce" value="mayonnaise">
+	    				<input type="radio" name="sauce" value="mayonnaise" onClick="scrollTo(supplements)">
+	    			</div>
+	    			<div class="element">
+	    				<label>Samouraï</label>
+	    				<input type="radio" name="sauce" value="samourai" onClick="scrollTo(supplements)">
+	    			</div>
+	    			<div class="element">
+	    				<label>Andalouse</label>
+	    				<input type="radio" name="sauce" value="andalouse" onClick="scrollTo(supplements)">
+	    			</div>
+	    			<div class="element">
+	    				<label>Algérienne</label>
+	    				<input type="radio" name="sauce" value="algerienne" onClick="scrollTo(supplements)">
+	    			</div>
+	    			<div class="element">
+	    				<label>Barbecue</label>
+	    				<input type="radio" name="sauce" value="bbq" onClick="scrollTo(supplements)">
+	    			</div>
+	    			<div class="element">
+	    				<label>Curry</label>
+	    				<input type="radio" name="sauce" value="curry" onClick="scrollTo(supplements)">
+	    			</div>
+	    			<div class="element">
+	    				<label>Biggy Burger</label>
+	    				<input type="radio" name="sauce" value="biggy_burger" onClick="scrollTo(supplements)">
+	    			</div>
+	    			<div class="element">
+	    				<label>Harissa</label>
+	    				<input type="radio" name="sauce" value="harissa" onClick="scrollTo(supplements)">
 	    			</div>
 	    		</div>
     		</fieldset>
-    		<fieldset>
-    			<input type="submit" value="Submit">
-    		</fieldset>
+    		
+    			<input type="submit" value="Commander!">
+    		
     		
 
     	</form>	
+
+    	<script src="js/scroll.js"></script>
     </body>	
