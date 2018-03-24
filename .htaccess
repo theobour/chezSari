@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+Options -Indexes
+Options -Multiviews
+Options +FollowSymLinks
+SetEnv REGISTER_GLOBALS 0
+SetEnv PHP_VER 5
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^theobour.fr [NC]
+RewriteRule ^(.*) http://www.theobour.fr/$1 [L,R=301,QSA]  
+
+
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}

@@ -13,29 +13,44 @@
 <body>
 <div class="container-fluid">
     <div class="row" style="margin-top: 15px;">
-        <div class="col-12 text-center" style="margin-top: 15px;">
-            <button class="btn btn-primary" id="btnEnvoi">Commande éffectué</button>
+        <div class="col-4">
+            <h2 class="text-center">En attente de payement</h2>
+            <div class="contain">
+                <div id="getdata"></div>
+            </div>
         </div>
-        <div class="col-6">
-            <form>
-                <h2 class="text-center">En attente de payement</h2>
-                <div class="contain">
-                    <span style="display: none;"><input type="radio" name="commande">test <br></span>
-                    <div id="getdata"></div>
-                </div>
-            </form>
+        <div class="col-4">
+            <h2 class="text-center">Commande prête</h2>
+            <div class="contain">
+                <div id="pret"></div>
+            </div>
         </div>
-        <div class="col-6">
+        <div class="col-4">
             <h2 class="text-center">Commande payée</h2>
             <div class="contain">
                 <div id="paye"></div>
             </div>
         </div>
     </div>
+    <footer>
+        <p>Pour accéder à la collecte de data <a href="collectdata.php">cliquez ici</a></p>
+    </footer>
 </div>
 
 <script type="text/javascript">
+    function dis3(idElt) {
+        xtr = new XMLHttpRequest();
+        xtr.open("GET", "commandeprete.php?ID=" + idElt, false);
+        xtr.send(null);
+    }
+    function getPret() {
+        xtml = new XMLHttpRequest();
+        xtml.open("POST", "commandeprete.php", false);
+        xtml.send(null);
+        document.getElementById("pret").innerHTML = xtml.responseText;
+    }
     function dis2(idElt) {
+        console.log(idElt);
         xtr = new XMLHttpRequest();
         xtr.open("GET", "commandevalide.php?ID=" + idElt, false);
         xtr.send(null);
@@ -51,19 +66,8 @@
 
     setInterval(function () {
         dis();
-        var btnElt = document.getElementById("btnEnvoi");
-        var formElt = document.querySelector("form");
-        var commandeElt = formElt.elements.commande;
-        console.log(commandeElt.length);
-        btnElt.addEventListener('click', function () {
-            for (i = 0; i < commandeElt.length; i++) {
-                if (commandeElt[i].checked) {
-                    dis2(commandeElt[i].value);
-                    console.log(commandeElt[i].value);
-                }
-            }
-        });
-    }, 4000);
+        getPret();
+    }, 1000);
 
 
 </script>

@@ -1,239 +1,538 @@
 <!DOCTYPE html>
 <html lang=fr>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Chez Sari</title>
-        <link rel="stylesheet" type="text/css" href="css/main.css">
-        <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Open+Sans" rel="stylesheet">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    </head>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chez Sari</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="js/tooltip.css">
 
 
-    <body>
-    	<div class="fond_blanc">
-	    	<header>
-	    		
-	    		<img src="img/logo.png" alt="logo_Sari">
-	    		<div class="fond_rouge">
-	    		</div>
-	    	</header>	
-	    	<nav>
-				<div class="progress-tracker-mobile">
-			        <ul class="progress-tracker progress-tracker--text">
-			          <li class="progress-step is-complete">
-			          	<a href="#menus" class="anchor">
-				            <span class="progress-marker"></span>
-				            <span class="progress-text">
-				              <h4 class="progress-title">Menu</h4>
-				            </span>
-			            </a>
-			          </li>
+</head>
 
-			          <li class="progress-step is-complete">
-			          	<a href="#sandwich" class="anchor">
-				            <span class="progress-marker"></span>
-				            <span class="progress-text">
-				              <h4 class="progress-title">Sandwich</h4>
-				            </span>
-				        </a>
-			          </li>
 
-			          <li class="progress-step is-active">
-			          	<a href="#ingredients" class="anchor">
-				            <span class="progress-marker"></span>
-				            <span class="progress-text">
-				              <h4 class="progress-title">Garniture</h4>
-				            </span>
-				        </a>
-			          </li>
+<body onload="getTable()">
 
-			          <li class="progress-step">
-			          	<a href="#supplements" class="anchor">
-				            <span class="progress-marker"></span>
-				            <span class="progress-text">
-				              <h4 class="progress-title">Suppléments</h4>
-				            </span>
-				        </a>
-			          </li>
-			        </ul>
-		        </div>
-		    </nav>
-		</div>
+<div class="fond_blanc">
+    <header>
 
-    	<form action="traitementcommande.php" method="post" >
+        <img src="img/logo.png" alt="logo_Sari">
+        <div class="fond_rouge">
+        </div>
+    </header>
+    <nav>
+        <div class="progress fond_blanc" style="border: 0.1px solid grey">
+            <div class="progress-bar progress-bar-info progress-bar-striped" id="progressBar" role="progressbar">
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="container">
+    <form method="post">
+        <fieldset id="surPlace">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2>Où souhaitez-vous consommer ?</h2>
+                </div>
+                <div class="col-4 offset-1 text-center espacement element" style="padding: 0">
+                    <button type="button" name="lieu" value="Place" onclick="toMenu(this.value)"
+                            class="buttonMep grand">
+                        <p>Sur place</p>
+                        <img alt="Sur place" src="img/flat/plate.png" class="img-fluid">
+                    </button>
+                </div>
+                <div class="col-4 offset-2 text-center espacement element" style="padding: 0;">
+                    <div class="col-12">
+                        <button type="button" name="lieu" value="Emporter" onclick="toMenu(this.value)"
+                                class="grand buttonMep">
+                            <p>A emporter</p>
+                            <img alt="Sur place" src="img/flat/online-store.png" class="img-fluid">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
 
-    		<fieldset id="surPlace">
-    			<div class="choice">
-	    			<div class="element">
-		    			<label>Sur Place</label>
-		    			<i class="material-icons">restaurant_menu</i>
-		    			<input type="radio" name="lieu" value="place" onclick="scrollTo(menus)">
-		    		</div>
-		    		<div class="element">	
-	    				<label>À Emporter</label>
-	    				<i class="material-icons">shopping_basket</i>
-	    				<input type="radio" name="lieu" value="emporter" onclick="scrollTo(menus)">
-	    			</div>	
-	    		</div>
-    		</fieldset>	
+        <fieldset id="menus">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2>Choisissez votre menu </h2>
+                </div>
+                <div class="col-4 offset-1 text-center espacement element">
+                    <label>
+                        <p>Frite</p><br>
+                        <img src="img/flat/french-fries.png" class="img-fluid"><br>
+                        <strong>+ 0.5€</strong><br>
+                        <input type="checkbox" data-nameadmin="F" name="menu" value="frite">
+                    </label>
+                </div>
+                <div class="col-4 offset-2 text-center espacement element">
+                    <label>
+                        <p>Boisson</p><br>
+                        <img src="img/flat/can.png" class="img-fluid"><br>
+                        <strong>+ 0.5€</strong><br>
+                        <input type="checkbox" data-nameadmin="B" name="menu" value="boisson">
+                    </label>
+                </div>
+                <div class="col-12 text-center espacement">
+                    <input type="button" class="btn btn-primary" onclick="toSandwich()" value="Continuer">
+                </div>
+            </div>
+        </fieldset>
 
-    		<fieldset id="menus">
-    			
-    			<h2>Choisissez votre menu </h2>
-    			<div class="choice">
-	    			<div class="element">	
-	    				<label>Sandwich + Frites + Boisson<br><em>1€</em></label>
-	    				<img src="img/image1.jpeg" alt="pain">		    			
-		    			<input type="radio" name="menu" value="classique" onclick="scrollTo(sandwich)">
-		    		</div>
+        <fieldset id="sandwich">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2>Choisissez votre sandwich </h2>
+                </div>
+                <div class="col-12 text-center espacement">
+                    <h3>Nos Top Sandwich</h3>
+                </div>
+                <!---KEBAB 1-->
+                <div class="col-4 text-center espacement element" style="padding: 0">
+                    <div class="text-center col-12 entete">
+                        <a href="#" data-toggle="tooltip" title="Viande kebab"><img
+                                src="img/flat/information.png"></a>
+                    </div>
+                    <div class="col-12">
+                        <button type="button" data-prix="4.5" data-nameAdmin="" value="kebab"
+                                onclick="toPain(this.value,this.dataset.prix)" class="buttonMep moyen">
+                            <p>Kebab</p>
+                            <img src="img/img_sari/kebab.png" alt="galette" class="img-fluid"><br>
+                            <strong>4.5€</strong>
+                        </button>
+                    </div>
+                </div>
+                <!--========
+                    KEBAB 2
+                =============-->
+                <div class="col-4 text-center espacement element" style="padding: 0">
+                    <div class="text-center col-12 entete">
+                        <a href="#" data-toggle="tooltip" title="Poulet curry"><img
+                                src="img/flat/information.png"></a>
+                    </div>
+                    <div class="col-12">
+                        <button type="button" data-prix="5.5" data-nameAdmin="" value="steak"
+                                onclick="toPain(this.value,this.dataset.prix)"
+                                class="moyen buttonMep">
+                            <p>Chicken</p>
+                            <img src="img/img_sari/chicken.png" alt="galette" class="img-fluid"><br>
+                            <strong>5.5€</strong>
+                        </button>
+                    </div>
+                </div>
+                <!--========
+                     KEBAB 3
+                =============-->
+                <div class="col-4 text-center espacement element" style="padding: 0">
+                    <div class="text-center col-12 entete">
+                        <a href="#" data-toggle="tooltip" title="3 steaks, oeufs, 2 cheddar, pain burger"><img
+                                src="img/flat/information.png"></a>
+                    </div>
+                    <div class="col-12">
+                        <button type="button" data-prix="6" data-pain="Pain burger" value="Mac Sari"
+                                onclick="toGarnitureSansSelection(this.value, this.dataset.prix, this.dataset.pain)"
+                                class="buttonMep moyen">
+                            <p>Mac Sari</p>
+                            <img src="img/img_sari/mcsari.png" alt="galette" class="img-fluid"><br>
+                            <strong>6€</strong>
+                        </button>
+                    </div>
+                </div>
+                <!--========
+                    KEBAB 4
+                =============-->
+                <div class="col-4 text-center espacement element" style="padding: 0">
+                    <div class="text-center col-12 entete">
+                        <a href="#" data-toggle="tooltip" title="Viande kebab, oeufs, cheddar, pomme de terre"><img
+                                src="img/flat/information.png"></a>
+                    </div>
+                    <div class="col-12">
+                        <button type="button" data-prix="6.5" value="Royal Sari"
+                                onclick="toPain(this.value,this.dataset.prix)" class="buttonMep moyen">
+                            <p>Royal Sari</p>
+                            <img src="img/img_sari/royalsari.png" alt="galette" class="img-fluid"><br>
+                            <strong>6.5€</strong>
+                        </button>
+                    </div>
+                </div>
+                <!--========
+                    KEBAB 5
+                =============-->
+                <div class="col-4 text-center espacement element" style="padding: 0">
+                    <div class="text-center col-12 entete">
+                        <a href="#" data-toggle="tooltip" title="Viande kebab, cordon bleu, cheddar, pain pita"><img
+                                src="img/flat/information.png"></a>
+                    </div>
+                    <div class="col-12">
+                        <button type="button" data-prix="6.5" data-pain="pita" value="Bleu Sari"
+                                onclick="toGarnitureSansSelection(this.value, this.dataset.prix, this.dataset.pain)"
+                                class="buttonMep moyen">
+                            <p>Bleu Sari</p>
+                            <img src="img/img_sari/bleusari.png" alt="galette" class="img-fluid"><br>
+                            <strong>6.5€</strong>
+                        </button>
+                    </div>
+                </div>
+                <!--========
+                    KEBAB 6
+                =============-->
+                <div class="col-4 text-center espacement element" style="padding: 0">
+                    <div class="text-center col-12 entete">
+                        <a href="#" data-toggle="tooltip" title="Viande kebab, cordon bleu, cheddar, pain pita"><img
+                                src="img/flat/information.png"></a>
+                    </div>
+                    <div class="col-12">
+                        <button type="button" data-prix="7.5" value="Badman" data-pain="pita"
+                                onclick="toGarnitureSansSelection(this.value, this.dataset.prix, this.dataset.pain)"
+                                class="buttonMep moyen">
+                            <p>Badman</p>
+                            <img src="img/img_sari/badman.png" alt="galette" class="img-fluid"><br>
+                            <strong>7.5€</strong>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
 
-		    		<div class="element">
-		    			<label>Sandwich seul</label>
-		    			<img src="img/image2.jpeg" alt="galette">	    			
-		    			<input type="radio" name="menu" value="sandwich" onclick="scrollTo(sandwich)">
-		    		</div>
-				</div>
+        <fieldset id="typePain">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2>Choisissez votre pain</h2>
+                </div>
+                <div class="col-4 offset-1 text-center espacement element" style="padding: 0">
+                    <button type="button" name="Pain" value="pain" onclick="toGarniture(this.value)"
+                            class="buttonMep grand">
+                        <p>Pain</p>
+                        <img src="img/flat/kebab.png" alt="galette" class="img-fluid">
+                    </button>
+                </div>
+                <div class="col-4 offset-2 text-center espacement element" style="padding: 0">
+                    <button type="button" name="Pita" value="pita" onclick="toGarniture(this.value)"
+                            class="buttonMep grand">
+                        <p>Pita</p>
+                        <img src="img/flat/pita.png" alt="galette" class="img-fluid">
+                    </button>
+                </div>
+            </div>
+        </fieldset>
 
-    		</fieldset>
+        <fieldset id="typeGarniture">
+            <div class="row">
+                <div class="text-center col-12">
+                    <h2>Choisissez votre garniture et votre sauce :</h2>
+                </div>
+                <div class="text-center col-12 espacement">
+                    <h3>Garniture</h3>
+                </div>
+                <div class="col-4 text-center espacement">
+                    <div class="element petit">
+                        <label>Salade
+                            <img src="img/flat/salad.png" class="img-fluid">
+                            <input type="checkbox" name="garniture[]" value="salade">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-4 text-center espacement">
+                    <div class="element petit">
+                        <label>Tomates
+                            <img src="img/flat/tomato.png" class="img-fluid">
+                            <input type="checkbox" name="garniture[]" value="tomate">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-4 text-center espacement">
+                    <div class="element petit">
+                        <label>Oignons
+                            <img src="img/flat/onion.png" class="img-fluid">
+                            <input type="checkbox" name="garniture[]" value="oignon">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-12 text-center espacement">
+                    <h3>Sauce</h3>
+                </div>
+                <div class="col-12 text-center">
+                    <p>Vous pouvez choisir au maximum 2 sauces. Chaque sauce supplémentaire vous sera facturée 0.2€.</p>
+                </div>
+                <div class="col-4 text-center espacement">
+                    <div class="element petit">
+                        <label>Blanche<br>
+                            <input type="checkbox" data-nameAdmin="SB" name="sauce" value="Blanche">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-4 text-center espacement">
+                    <div class="element petit">
+                        <label>Ketchup<br>
+                            <input type="checkbox" data-nameadmin="ket" name="sauce" value="Ketchup">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-4 text-center espacement">
+                    <div class="element petit">
+                        <label>Mayonnaise<br>
+                            <input type="checkbox" data-nameadmin="mayo" name="sauce" value="Mayonnaise">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-4 text-center espacement">
+                    <div class="element petit">
+                        <label>Andalouse<br>
+                            <input type="checkbox" data-nameadmin="and" name="sauce" value="Andalouse">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-4 text-center espacement">
+                    <div class="element petit">
+                        <label>Algérienne<br>
+                            <input type="checkbox" name="sauce" value="Alégrienne" data-nameadmin="alg">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-4 text-center espacement">
+                    <div class="element petit">
+                        <label>Harissa<br>
+                            <input type="checkbox" name="sauce" value="Harissa" data-nameadmin="ha">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-4 text-center espacement">
+                    <div class="element petit">
+                        <label>Biggy Burger<br>
+                            <input type="checkbox" name="sauce" value="Biggy Burger" data-nameadmin="BB">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-4 text-center espacement">
+                    <div class="element petit">
+                        <label>Barbecue<br>
+                            <input type="checkbox" name="sauce" value="Barbecue" data-nameadmin="BAR">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-4 text-center espacement">
+                    <div class="element petit">
+                        <label>Curry<br>
+                            <input type="checkbox" name="sauce" value="Curry" data-nameadmin="curry">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-4 text-center espacement">
+                    <div class="element petit">
+                        <label>Moutarde<br>
+                            <input type="checkbox" name="sauce" value="Moutarde" data-nameadmin="mout">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-4 text-center espacement">
+                    <div class="element petit">
+                        <label>Brésil<br>
+                            <input type="checkbox" name="sauce" value="Brésil" data-nameadmin="br">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-4 text-center espacement">
+                    <div class="element petit">
+                        <label>Chilli Thai<br>
+                            <input type="checkbox" name="sauce" value="Chilli Thai" data-nameadmin="chil">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-4 text-center espacement offset-2">
+                    <div class="element petit">
+                        <label>Tartare<br>
+                            <input type="checkbox" name="sauce" value="Tartare" data-nameadmin="tar">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-4 text-center espacement">
+                    <div class="element petit">
+                        <label>Fromagère<br>
+                            <input type="checkbox" name="sauce" value="Fromagère" data-nameadmin="fr">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-12 text-center espacement">
+                    <input type="button" class="btn btn-primary"
+                           value="Continuer ma commande"
+                           onclick="toSupplement1()">
+                </div>
+            </div>
+        </fieldset>
 
-    		<fieldset id="sandwich">
-    			
-    			<h2>Choisissez votre sandwich </h2>
-    			<div class="choice">
-	    			<div class="element">
-	    				<label>Kebab</label>
-		    			<img src="img/image2.jpeg" alt="galette">
-		    			<input type="radio" name="sandwich" value="kebab" onclick="scrollTo(ingredients)">
-		    			<p>Viande de kébab<br><em>5€</em></p>
-		    		</div>
-		    		<div class="element">
-	    				<label>Steak</label>
-		    			<img src="img/image2.jpeg" alt="galette">
-		    			<input type="radio" name="sandwich" value="steak" onclick="scrollTo(ingredients)">
-		    			<p>boeuf<br><em>5€</em></p>
-		    		</div>
-		    		<div class="element">
-	    				<label>Royal</label>
-		    			<img src="img/image2.jpeg" alt="galette">
-		    			<input type="radio" name="sandwich" value="royal" onclick="scrollTo(ingredients)">
-		    			<p>Viande de kébab & cheddar<br><em>5.50€</em></p>
-		    		</div>
-		    		<div class="element">
-	    				<label>Chicken</label>
-		    			<img src="img/image2.jpeg" alt="galette">
-		    			<input type="radio" name="sandwich" value="chicken" onclick="scrollTo(ingredients)">
-		    			<p>Poulet Curry<br><em>6€</em></p>
-		    		</div>
-		    		<div class="element">
-	    				<label>Sari</label>
-		    			<img src="img/image2.jpeg" alt="galette">
-		    			<input type="radio" name="sandwich" value="sari" onclick="scrollTo(ingredients)">
-		    			<p>Viande de kébab, oeufs & curry<br><em>6€</em></p>
-		    		</div>
-		    		<div class="element">
-	    				<label>Royal Sari</label>
-		    			<img src="img/image2.jpeg" alt="galette">
-		    			<input type="radio" name="sandwich" value="royal_sari" onclick="scrollTo(ingredients)">
-		    			<p>Sari + Pommes de terre<br><em>6€</em></p>
-		    		</div>
-	    		</div>
+        <fieldset id="supplement1">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2>titre à trouver</h2>
+                </div>
+                <div class="col-12 text-center espacement">
+                    <h3>Un supplément viande</h3>
+                </div>
+                <div class="col-12 text-center">
+                    <p>Chaque supplément viande vous coutera 1€ supplémentaire</p>
+                </div>
+                <div class="col-4 offset-1 text-center espacement">
+                    <div class="element petit">
+                        <label>Kebab<br>
+                            <input type="checkbox" name="supplement1" value="Kebab" data-prix="1">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-4 offset-2 text-center espacement">
+                    <div class="element petit">
+                        <label>Steak<br>
+                            <input type="checkbox" name="supplement1" value="Steak" data-prix="1">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-4 offset-1 text-center espacement">
+                    <div class="element petit">
+                        <label>Chicken<br>
+                            <input type="checkbox" name="supplement1" value="Chicken" data-prix="1">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-4 offset-2 text-center espacement">
+                    <div class="element petit">
+                        <label>Merguez<br>
+                            <input type="checkbox" name="supplement1" value="Merguez" data-prix="1">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-12 text-center espacement">
+                    <h3>Un supplément dans votre sandwich ?</h3>
+                </div>
+                <div class="col-4 offset-1 text-center espacement">
+                    <div class="element moyen">
+                        <label>Olive<br>
+                            <img src="img/flat/olives.png" class="img-fluid" style="width: 70%"><br>
+                            <strong>0.5€</strong><br>
+                            <input type="checkbox" name="supplement2" value="Olive" data-prix="0.5">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-4 offset-2 text-center espacement">
+                    <div class="element moyen">
+                        <label>Cheddar<br>
+                            <img src="img/flat/cheese.png" class="img-fluid" style="width: 70%"><br>
+                            <strong>0.5€</strong><br>
+                            <input type="checkbox" name="supplement2" value="Cheddar" data-prix="0.5">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-4 offset-1 text-center espacement">
+                    <div class="element moyen">
+                        <label>Oeuf<br>
+                            <img src="img/flat/egg.png" class="img-fluid" style="width: 70%"><br>
+                            <strong>1€</strong><br>
+                            <input type="checkbox" name="supplement2" value="Oeuf" data-prix="1">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-4 offset-2 text-center espacement">
+                    <div class="element moyen">
+                        <label>Cornichon<br>
+                            <img src="img/flat/pickle.png" class="img-fluid" style="width: 70%"><br>
+                            <strong>0.5€</strong><br>
+                            <input type="checkbox" name="supplement2" value="Cornichon" data-prix="0.5">
+                        </label>
+                    </div>
+                </div>
+                <div class="col-12 text-center espacement">
+                    <input type="button" class="btn btn-primary"
+                           value="Continuer ma commande"
+                           onclick="toSupplement2()">
+                </div>
+            </div>
+        </fieldset>
 
-    		</fieldset>	
+        <fieldset id="supplement2">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2>Un petit dessert ?</h2>
+                </div>
+                <div class="col-4 offset-1 text-center espacement">
+                    <div class="element petit">
+                        <label>Tiramisu<br>
+                            <input type="checkbox" name="supplement2" value="Tiramisu" data-prix="2.5"><br>
+                            <strong>2.5€</strong>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-4 offset-2 text-center espacement">
+                    <div class="element petit">
+                        <label>Tarte Daim<br>
+                            <input type="checkbox" name="supplement2" value="Tarte Daim" data-prix="2.5"><br>
+                            <strong>2.5€</strong>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-12 text-center espacement">
+                    <input type="button" class="btn btn-primary"
+                           value="Valider la commande"
+                           onclick="toFinish()">
+                </div>
+            </div>
+        </fieldset>
 
-    		<fieldset id="ingredients">
-    			
-    			<h2>Choisissez votre pain et votre garniture</h2>
+        <fieldset id="envoiRecap">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2>Le récapitulatif de votre commande</h2>
+                </div>
+                <div class="col-12">
+                    <span id="recap"></span>
+                </div>
+                <div class="col-12 text-center">
+                    <input type="button" id="envoi" class="btn btn-primary" value="Commander!">
+                </div>
+            </div>
+        </fieldset>
 
-    			<h3>Pain</h3>
+        <fieldset id="finalisation">
+            <div class="row">
+                <div class="col-12">
+                    <div class="alert alert-success">
+                        <p>Votre commande est la numéro: <strong><span id="getdata"></span></strong></p>
+                    </div>
+                </div>
+                <div class="col-12 text-center">
+                    <div class="alert alert-info" style="margin-top: 90px;">
+                        <span onclick="annulationCommande()">Cliquez ici si vous souhaitez effectuer une nouvelle commande !</span>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <footer class="espacement">
+        <div class="row">
+            <div class="col-12 text-center bottom">
+                <img src="img/cameleon.png" class="img-fluid" style="max-height: 45px;">
+            </div>
+        </div>
+    </footer>
+    <div class="col-12 text-center" style="margin-bottom: 15px;margin-top: 45px;" id="btnReset">
+        <input type="button" class="btn btn-danger" onclick="annulationCommande()"
+               value="Annuler ma commade">
+    </div>
+</div>
 
-    			<div class="choice">
-    				<div class="element">
-    					<label>Pain</label>
-	    				<img src="img/image1.jpeg" alt="pain">
-	    				<input type="radio" name="pain" value="pain" onclick="scrollTo(garniture)">
-    				</div>
-    				<div class="element">
-    					<label>Galette/Pita</label>
-    					<img src="img/image2.jpeg" alt="galette">	     					
-    					<input type="radio" name="pain" value="pita" onclick="scrollTo(garniture)">
-    				</div>
-    			</div>
-    			
-    			<h3>Garniture</h3>
-    			<div class="choice" id="garniture">
-	    			<div class="element">
+<script src="js/scroll.js" type="text/javascript"></script>
+<!--<script src="js/tooltip.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
 
-		    			<label>Aucune</label>
-		    			<input type="checkbox" name="garniture[]" value="sans garniture" >
-					</div>
-					<div class="element">
-						<label>Salade</label>
-						<img src="img/salade.jpg">	    				
-	    				<input type="checkbox" name="garniture[]" value="salade">
-	    			</div>
-	    			<div class="element">    				
-	    				<label>Tomates</label>
-	    				<img src="img/tomate.jpg">
-	    				<input type="checkbox" name="garniture[]" value="tomate">
-	    			</div>
-	    			<div class="element">
-	    				<label>Oignons</label>
-	    				<img src="img/oignon.jpg">
-	    				<input type="checkbox" name="garniture[]" value="oignon">
-	    			</div>
-    			</div>
-
-    			<h3>Sauce</h3>
-    			<div class="choice sauce">
-	    			<div class="element">		    			
-		    			<label>Blanche</label>
-		    			<input type="radio" name="sauce" value="blanche" onclick="scrollTo(supplements)">
-		    		</div>
-		    		<div class="element">	    				
-	    				<label>Ketchup</label>
-	    				<input type="radio" name="sauce" value="ketchup" onclick="scrollTo(supplements)">
-	    			</div>
-	    			<div class="element">
-	    				<label>Mayonnaise</label>
-	    				<input type="radio" name="sauce" value="mayonnaise" onclick="scrollTo(supplements)">
-	    			</div>
-	    			<div class="element">
-	    				<label>Samouraï</label>
-	    				<input type="radio" name="sauce" value="samourai" onclick="scrollTo(supplements)">
-	    			</div>
-	    			<div class="element">
-	    				<label>Andalouse</label>
-	    				<input type="radio" name="sauce" value="andalouse" onclick="scrollTo(supplements)">
-	    			</div>
-	    			<div class="element">
-	    				<label>Algérienne</label>
-	    				<input type="radio" name="sauce" value="algerienne" onclick="scrollTo(supplements)">
-	    			</div>
-	    			<div class="element">
-	    				<label>Barbecue</label>
-	    				<input type="radio" name="sauce" value="bbq" onclick="scrollTo(supplements)">
-	    			</div>
-	    			<div class="element">
-	    				<label>Curry</label>
-	    				<input type="radio" name="sauce" value="curry" onclick="scrollTo(supplements)">
-	    			</div>
-	    			<div class="element">
-	    				<label>Biggy Burger</label>
-	    				<input type="radio" name="sauce" value="biggy_burger" onclick="scrollTo(supplements)">
-	    			</div>
-	    			<div class="element">
-	    				<label>Harissa</label>
-	    				<input type="radio" name="sauce" value="harissa" onclick="scrollTo(supplements)">
-	    			</div>
-	    		</div>
-    		</fieldset>
-    		
-    			<input type="submit" value="Commander!">
-    		
-    		
-
-    	</form>	
-
-    	<script src="js/scroll.js"></script>
-    </body>	
+</body>
+</html>
